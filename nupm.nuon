@@ -1,0 +1,7 @@
+{
+    name: nu-batteries
+    type: module
+    version: "0.1.0"
+    description: "An extended standard library for nu"
+    license: "LICENSE"
+}
