@@ -37,3 +37,9 @@ export def is-superset [other: list<any>]: list<any> -> bool {
   let self = $in
   $other | all {|x| $x in $self}
 }
+
+# Check whether the input list contains the same items as `other` (in any order).
+export def equal [other: list<any>]: list<any> -> bool {
+  let self = $in
+  ($self | all {|x| $x in $other}) and ($other | all {|x| $x in $self})
+}

@@ -62,3 +62,11 @@ export def test-set-is-superset [] {
   assert not ([2 6] | set is-superset [4 2])
   assert not ([] | set is-superset [3 1])
 }
+
+export def test-set-equal [] {
+  assert ([1 2 3] | set equal [3 1 2])
+  assert not ([1 2 3] | set equal [1 3])
+  assert not ([1 3] | set equal [1 3 2])
+  assert not ([1 2] | set equal [3 4])
+  assert ([] | set equal [])
+}
