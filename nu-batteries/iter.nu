@@ -23,3 +23,17 @@ export def with-previous []: list<any> -> table<item: any, previous: any> {
   | window 2
   | each { {item: $in.1 previous: $in.0} }
 }
+
+# Returns the cartesian product of two lists.
+#
+# Examples:
+# ---------
+#   List all combinations of a letter a-c with a number 1-3
+#   > [a b c] | iter product [1 2 3]
+export def product [other: list<any>]: list<any> -> list<list<any>> {
+  each {|a|
+    $other | each {|b|
+      [$a, $b]
+    }
+  } | flatten
+}

@@ -17,6 +17,12 @@ export def test-with-previous [] {
   assert equal ([] | iter with-previous) []
 }
 
+export def test-iter-product [] {
+  assert equal ([a b c] | iter product [1 2]) [[a, 1], [a, 2], [b, 1], [b, 2], [c, 1], [c, 2]]
+  assert equal ([a b c] | iter product []) []
+  assert equal ([] | iter product [1 2]) []
+}
+
 export def test-set-difference [] {
   assert equal ([1 4 6] | set difference [4 2 8]) [1 6]
   assert equal ([1 2 3] | set difference [4 5]) [1 2 3]
