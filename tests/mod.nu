@@ -76,3 +76,9 @@ export def test-set-equal [] {
   assert not ([1 2] | set equal [3 4])
   assert ([] | set equal [])
 }
+
+export def test-path-prefix [] {
+  assert equal ([/usr/local/bin /usr/bin] | path prefix) /usr
+  assert equal ([/usr/bin /bin] | path prefix) /
+  assert equal ([/usr/local/bin /usr/local/bin] | path prefix) /usr/local/bin
+}

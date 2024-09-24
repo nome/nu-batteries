@@ -37,6 +37,10 @@
 ╭───┬─────╮
 │ 0 │ 290 │
 ╰───┴─────╯
+
+# Find the largest common prefix in a list of paths
+> [/usr/local/bin /usr/bin] | path prefix
+/usr
 ```
 
 For a list of all commands, see `help nu-batteries`.
