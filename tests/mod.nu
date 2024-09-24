@@ -82,3 +82,13 @@ export def test-path-prefix [] {
   assert equal ([/usr/bin /bin] | path prefix) /
   assert equal ([/usr/local/bin /usr/local/bin] | path prefix) /usr/local/bin
 }
+
+export def test-text-indent [] {
+  assert equal ("abc\n\ndef" | text indent "  ") "  abc\n\n  def"
+  assert equal ("abc\n\ndef" | text indent "# " {true}) "# abc\n# \n# def"
+}
+
+export def test-text-dedent [] {
+  assert equal ("  abc\n    def" | text dedent) "abc\n  def"
+  assert equal ("    abc\n  def" | text dedent) "  abc\ndef"
+}

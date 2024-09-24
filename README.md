@@ -41,6 +41,24 @@
 # Find the largest common prefix in a list of paths
 > [/usr/local/bin /usr/bin] | path prefix
 /usr
+
+# Increase indentation of text without creating trailing whitespace on empty lines
+> "1. first\n   * sub-point\n\n2. second" | text indent "  "
+  1. first
+     * sub-point
+
+  2. second
+
+# Remove indentation from text
+> "  1. first\n     * sub-point" | text dedent
+1. first
+   * sub-point
+
+# Comment out lines of code or configuration
+> "def hello [] {\n  'world'\n}" | text indent "# " {true}
+# def hello [] {
+#   'world'
+# }
 ```
 
 For a list of all commands, see `help nu-batteries`.
