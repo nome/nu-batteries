@@ -1,3 +1,5 @@
+use std iter
+
 # Finds the largest common prefix in a list of paths.
 #
 # Examples:
@@ -10,4 +12,17 @@ export def prefix []: list<string> -> string {
   }
   | each { get 0 }
   | path join
+}
+
+# Looks up a file or directory in a list of paths.
+#
+# Examples:
+# ---------
+#   `(which nu).path`
+#   > "nu" | path lookup $env.PATH
+export def lookup [pathlist: list<string>]: string -> string {
+  let needle = $in
+  $pathlist
+    | each { path join $needle }
+    | iter find {|p| $p | path exists}
 }

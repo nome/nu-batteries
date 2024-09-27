@@ -83,6 +83,21 @@ export def test-path-prefix [] {
   assert equal ([/usr/local/bin /usr/local/bin] | path prefix) /usr/local/bin
 }
 
+export def test-path-lookup [] {
+  let testdir = mktemp --directory
+  mkdir ($testdir | path join "a")
+  mkdir ($testdir | path join "b")
+  touch ($testdir | path join "a" "aaa")
+  touch ($testdir | path join "b" "bbb")
+  let p = [a b] | each {|x| $testdir | path join $x }
+
+  assert equal ("aaa" | path lookup $p) ($testdir | path join "a" "aaa")
+  assert equal ("bbb" | path lookup $p) ($testdir | path join "b" "bbb")
+  assert equal ("nonexistent" | path lookup $p) null
+
+  rm -rf $testdir
+}
+
 export def test-text-indent [] {
   assert equal ("abc\n\ndef" | text indent "  ") "  abc\n\n  def"
   assert equal ("abc\n\ndef" | text indent "# " {true}) "# abc\n# \n# def"

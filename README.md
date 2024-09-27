@@ -42,6 +42,12 @@
 > [/usr/local/bin /usr/bin] | path prefix
 /usr
 
+# look up a file or directory in a list of directories
+> "nupm" | path lookup $env.NU_LIB_DIRS
+/home/nome/.config/nushell/nupm/modules/nupm
+> "applications/Alacritty.desktop" | path lookup ($env.XDG_DATA_DIRS | split row (char esep))
+/usr/share/applications/Alacritty.desktop
+
 # Increase indentation of text without creating trailing whitespace on empty lines
 > "1. first\n   * sub-point\n\n2. second" | text indent "  "
   1. first
