@@ -107,3 +107,8 @@ export def test-text-dedent [] {
   assert equal ("  abc\n    def" | text dedent) "abc\n  def"
   assert equal ("    abc\n  def" | text dedent) "  abc\ndef"
 }
+
+export def test-from-mdtable [] {
+  let t = [[a b c]; [d e f] [g h i]]
+  assert equal ($t | to md | from mdtable) $t
+}
