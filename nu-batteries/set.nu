@@ -4,18 +4,18 @@
 
 # Return the list of elements that are in the input but not in `other`.
 export def difference [other: list<any>]: list<any> -> list<any> {
-  filter {|x| $x not-in $other }
+  where {|x| $x not-in $other }
 }
 
 # Return the list of elements that are in either the input list and `other` but not both.
 export def symmetric-difference [other: list<any>]: list<any> -> list<any> {
   let self = $in
-  ($self | filter {|x| $x not-in $other}) ++ ($other | filter {|x| $x not-in $self})
+  ($self | where {|x| $x not-in $other}) ++ ($other | where {|x| $x not-in $self})
 }
 
 # Return the list of elements that are both in the input list and in `other`.
 export def intersection [other: list<any>]: list<any> -> list<any> {
-  filter {|x| $x in $other }
+  where {|x| $x in $other }
 }
 
 # Return the list of elements that are in either input list or `other`.

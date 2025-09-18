@@ -8,7 +8,7 @@
 
 ### manually
 * `git clone https://github.com/nome/nu-batteries`
-* In your `env.nu`, add the path of the `nu-batteries` directory to `$env.NU_LIB_DIRS`
+* In your `config.nu`, add the path of the `nu-batteries` directory to `const NU_LIB_DIRS`
 
 ## usage
 ```
