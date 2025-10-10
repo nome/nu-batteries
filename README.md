@@ -65,6 +65,12 @@
 # def hello [] {
 #   'world'
 # }
+
+# Parse LDIF data
+> ldapsearch -x -LLL objectClass=posixAccount | from ldif
+
+# Generate LDIF data
+> [[dn objectclass cn uid]; ["cn=Barbara Jensen,dc=example,dc=com" person ["Barbara Jensen" "Babs Jensen"] bjensen]] | to ldif | ldapadd
 ```
 
 For a list of all commands, see `help nu-batteries`.
